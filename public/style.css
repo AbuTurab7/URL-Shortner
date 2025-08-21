@@ -1,0 +1,47 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Urbanist", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+.main-container{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.container{
+    box-shadow: 0 0 4px rgb(115, 114, 114);
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 15px;
+    border-radius: 20px;
+}
+form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 15px;
+}
+#url , #code{
+    width: 400px;
+    height: 40px;
+    padding: 5px;
+}
+
+#shortenBtn{
+    padding: 10px 15px;
+    font-size: 15px;
+    border-radius: 10px;
+    background-color: rgb(3, 121, 171);
+    color: white;
+    border: none;
+    cursor: pointer;
+}
