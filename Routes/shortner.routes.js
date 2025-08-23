@@ -3,7 +3,7 @@ import { shortener , getShortenURL , redirectURL } from "../Controllers/shortner
 
 const router = Router();
 
-router.post("/shorten" , shortener )
+router.post("/shorten" , shortener );
 
 router.get("/", getShortenURL );
 

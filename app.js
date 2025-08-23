@@ -3,10 +3,8 @@ import { join } from "path";
 import router from "./Routes/shortner.routes.js";
 
 const app = express();
-
+app.set("view engine" , "ejs");
 const staticPath = join(import.meta.dirname, "public");
-
-
 
 app.use(express.static(staticPath));
 app.use(express.urlencoded({ extended: true }));
