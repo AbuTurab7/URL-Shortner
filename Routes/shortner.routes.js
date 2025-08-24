@@ -7,6 +7,6 @@ router.post("/shorten" , shortener );
 
 router.get("/", getShortenURL );
 
-router.get("/:code", redirectURL);
+router.get("/:shortCode", redirectURL);
 
 export default router;

@@ -34,8 +34,8 @@
             <br />
             <input
               type="text"
-              name="code"
-              id="code"
+              name="shortCode"
+              id="shortCode"
               required
               placeholder="youtube"
             />
@@ -45,13 +45,13 @@
         </form>
         <h2>Shortened URL's</h2>
         <ul id="shortened_urls">
-          <% const list = Object.entries(Links) %>
+          <% const list = Links %>
           <% const newList = list.slice(-5).reverse() %>
-          <% newList.map(([code, url]) => { %>
+          <% newList.map(({shortCode, url}) => { %>
           <% const newURL = url.length >= 40 ? url.slice(0, 40) + "..." : url; %>
           <li>
-            <a href="/<%= code%>" target="_blank">
-              <%= host %> / <%= code %>
+            <a href="/<%= shortCode%>" target="_blank">
+              <%= host %> / <%= shortCode %>
             </a>
             <br />
             <%= newURL %>

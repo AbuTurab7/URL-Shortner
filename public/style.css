@@ -30,7 +30,7 @@ form{
     flex-direction: column;
     gap: 15px;
 }
-#url , #code{
+#url , #shortCode{
     width: 400px;
     height: 40px;
     padding: 5px;

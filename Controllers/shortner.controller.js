@@ -1,11 +1,14 @@
-import { saveToFile } from "../Modals/shortner.modal.js";
-import { getLinks } from "../Modals/shortner.modal.js";
+import { saveToFile , getLinks , getShortLinks } from "../Modals/shortner.modal.js";
+
+export const getShortenURL = async (req, res) => {
+  const Links = await getLinks();
+  res.render("index", { Links, host: req.host });
+};
 
 export const shortener = async (req, res) => {
-  const Links = await getLinks();
-  const { code, url } = req.body;
-
-  if (Links[code]) {
+  const { url , shortCode } = req.body;
+ const Links = await getLinks();
+  if (Links[shortCode]) {
     return res.send(`
     <script>
       alert("Short code already exists. Try another one!");
@@ -14,8 +17,7 @@ export const shortener = async (req, res) => {
   `);
   }
 
-  Links[code] = url;
-  await saveToFile(Links);
+  await saveToFile({ url, shortCode });
   res.send(`
     <script>
       alert("URL shorten successfully!");
@@ -24,20 +26,14 @@ export const shortener = async (req, res) => {
   `);
 };
 
-export const getShortenURL = async (req, res) => {
-  const Links = await getLinks();
-res.render("index" ,  { Links , host : req.host } );
-};
-
-
 
 export const redirectURL = async (req, res) => {
-  const Links = await getLinks();
-  const { code } = req.params;
-
-  if (Links[code]) {
-    res.redirect(Links[code]);
-  } else {
-    res.status(404).send("Short link not found!");
+  try {
+    const { shortCode } = req.params;
+    const link = await getShortLinks(shortCode);
+    if (!link) return res.redirect("/404");
+    return res.redirect(link.url);
+  } catch (error) {
+    console.log(error);
   }
 };
