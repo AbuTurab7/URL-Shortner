@@ -12,7 +12,7 @@ dotenv.config({ path: join(__dirname, "../.env") });
 export const envSchema = z.object({
   PORT: z.coerce.number().default(3000),
   MONGODB_URL: z.string(),
-  MONGODB_DATABASE_NAME: z.string(),
+  // MONGODB_DATABASE_NAME: z.string(),
 });
 
 const parsed = envSchema.safeParse(process.env);

@@ -2,6 +2,7 @@ import express from "express";
 import { join } from "path";
 import router from "./Routes/shortner.routes.js";
 import {env} from "./config/env.js"
+import { connectDB } from "./config/db-client.js";
 
 const app = express();
 app.set("view engine" , "ejs");
@@ -12,6 +13,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(router);
 
 const PORT = env.PORT;
+await connectDB();
 app.listen(PORT, () => {
   console.log(`Server is running on PORT :${PORT}`);
 });
