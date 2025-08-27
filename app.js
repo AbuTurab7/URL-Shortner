@@ -3,6 +3,7 @@ import { join } from "path";
 import router from "./Routes/shortner.routes.js";
 import {env} from "./config/env.js"
 import { connectDB } from "./config/db-client.js";
+import authRouter from "./Routes/auth.routes.js";
 
 const app = express();
 app.set("view engine" , "ejs");
@@ -10,7 +11,9 @@ const staticPath = join(import.meta.dirname, "public");
 
 app.use(express.static(staticPath));
 app.use(express.urlencoded({ extended: true }));
+app.use(authRouter);
 app.use(router);
+
 
 const PORT = env.PORT;
 await connectDB();
