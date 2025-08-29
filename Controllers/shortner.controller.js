@@ -1,9 +1,11 @@
 // import { saveToFile , getLinks , getShortLinks } from "../Modals/shortner.modal.js";
 import { url_model } from "../schema/URL_schema.js";
+
 export const getShortenURL = async (req, res) => {
   // const Links = await getLinks();
   const Links = await url_model.find();
-  res.render("index", { Links, host: req.host });
+  const isLoggedIn = req.cookies.isLoggedIn;
+  res.render("index", { Links, host: req.host , isLoggedIn });
 };
 
 export const shortener = async (req, res) => {

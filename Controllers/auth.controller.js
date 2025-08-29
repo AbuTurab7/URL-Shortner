@@ -1,7 +1,11 @@
 
-export const registration = async (req , res) => {
-  return await res.render("auth/register");
+export const registration =  (req , res) => {
+  return  res.render("auth/register");
 }
-export const getLogin = async (req , res) => {
- return await res.render("auth/login");
+export const getLogin =  (req , res) => {
+ return  res.render("auth/login");
+}
+export const loggedIn =  (req , res) => {
+ res.cookie("isLoggedIn", "true");
+ res.redirect("/");
 }

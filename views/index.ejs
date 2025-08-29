@@ -16,6 +16,11 @@
     <%- include("./partials/navbar"); %>
     <div class="main-container">
       <div class="container">
+        <% if (isLoggedIn) { %>
+        <h2>Logged In</h2>
+        <% } else { %>
+        <h2>You are not Logged In</h2>
+        <% } %>
         <h1>URL Shortner</h1>
         <form action="/shorten" method="POST">
           <div class="url-input">
@@ -46,10 +51,9 @@
         </form>
         <h2>Shortened URL's</h2>
         <ul id="shortened_urls">
-          <% const list = Links %>
-          <% const newList = list.slice(-5).reverse() %>
-          <% newList.map(({shortCode, url}) => { %>
-          <% const newURL = url.length >= 40 ? url.slice(0, 40) + "..." : url; %>
+          <% const list = Links %> <% const newList = list.slice(-5).reverse()
+          %> <% newList.map(({shortCode, url}) => { %> <% const newURL =
+          url.length >= 40 ? url.slice(0, 40) + "..." : url; %>
           <li>
             <a href="/<%= shortCode%>" target="_blank">
               <%= host %> / <%= shortCode %>
